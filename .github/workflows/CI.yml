@@ -7,7 +7,7 @@ on:
 
 jobs:
  Build:
-    
+
   runs-on: ubuntu-latest
 
   steps:
@@ -18,10 +18,10 @@ jobs:
     cd banking
     cmake -H. -B_build
     cmake --build _build
-  
+
  Testing:
   runs-on: ubuntu-latest
-    
+
   steps:
   - uses: actions/checkout@v2
   - name: Update
@@ -29,7 +29,7 @@ jobs:
     sudo apt install git && git submodule update --init
     sudo apt install lcov
     sudo apt install g++-7
-      
+
   - name: Testing
    run: |
     mkdir _build
@@ -38,7 +38,7 @@ jobs:
     cmake --build .
     ./tests
     lcov -t "banking" -o lcov.info -c -d .
-        
+
   - name: Coveralls
    uses: coverallsapp/github-action@master
    with:
@@ -46,7 +46,7 @@ jobs:
     parallel: true
     path-to-lcov: ./_build/lcov.info
     coveralls-endpoint: https://coveralls.io
-        
+
   - name: Coveralls Finish
    uses: coverallsapp/github-action@master
    with:
