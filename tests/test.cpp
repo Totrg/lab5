@@ -54,6 +54,7 @@ TEST(Transaction, Transaction_test) {
     MockAccount acc2(2, 1000);
     MockAccount acc3(3, 10000);
     MockAccount acc4(4, 5000);
+    EXPECT_CALL(trans, Make(testing::_, testing::_, testing::_)).Times(6);
     EXPECT_CALL(trans, set_fee(testing::_)).Times(1);
     trans.set_fee(200);
     EXPECT_THROW(trans.Make(acc3, acc3, 1000), std::logic_error);
@@ -62,7 +63,6 @@ TEST(Transaction, Transaction_test) {
     EXPECT_EQ(trans.Make(acc3, acc4, 50), false);
     EXPECT_EQ(trans.Make(acc2, acc4, 2000), false);
     EXPECT_CALL(trans, fee()).Times(1);
-    EXPECT_CALL(trans, Make(testing::_, testing::_, testing::_)).Times(1);
     trans.Make(acc4, acc1, 1000);
     trans.fee();
 }

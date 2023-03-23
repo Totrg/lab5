@@ -1,3 +1,0 @@
-/home/totrg/lab5/banking/_build/CMakeFiles/banking.dir
-/home/totrg/lab5/banking/_build/CMakeFiles/edit_cache.dir
-/home/totrg/lab5/banking/_build/CMakeFiles/rebuild_cache.dir
